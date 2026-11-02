@@ -1,0 +1,689 @@
+## 1. Главная идея
+
+Сайт предназначен для иностранных и местных туристов, которые хотят узнать о Кыргызстане, посмотреть туристические направления и туры и забронировать понравившийся тур.
+
+Главная задача сайта:
+
+**Discover Kyrgyzstan → Explore destinations → Choose a tour → Book it**
+
+Сайт должен выглядеть как современный premium travel website, а не как типичный туристический сайт из шаблона.
+
+---
+
+# 2. Дизайн
+
+Создай минималистичный, стильный и современный визуальный стиль.
+
+Основная цветовая палитра:
+
+- глубокий природный зелёный
+- спокойный синий
+- песочный / бежевый
+- молочный / off-white
+- тёмный графит для текста
+
+Пример направления:
+
+Green — #2F5D50  
+Blue — #3E6475  
+Sand — #D8C3A5  
+Ivory — #F7F3EA  
+Dark — #252525
+
+НЕ обязательно использовать именно эти HEX-коды, можешь немного адаптировать палитру, если это улучшит дизайн.
+
+## Визуальная атмосфера
+
+Сайт должен передавать:
+
+- горы
+- природу
+- свободу
+- путешествия
+- кочевую культуру
+- Иссык-Куль
+- степи
+- озёра
+- юрты
+- национальную культуру
+
+Но национальные элементы должны использоваться **очень аккуратно и современно**.
+
+Не хочу:
+
+- чрезмерные орнаменты
+- много красного
+- перегруженные этнические паттерны
+- дешёвый туристический дизайн
+- слишком много декоративных элементов
+- визуальный шум
+
+Можно использовать небольшие вдохновлённые кыргызскими орнаментами декоративные элементы, тонкие линии, геометрические мотивы или небольшие паттерны.
+
+Национальная эстетика должна ощущаться через детали, а не кричать о себе.
+
+---
+
+# 3. Языки
+
+Сайт должен поддерживать 3 языка:
+
+🇷🇺 Russian  
+🇬🇧 English  
+🇪🇸 Spanish
+
+В header должен быть переключатель:
+
+RU | EN | ES
+
+При переключении языка должен переводиться ВЕСЬ интерфейс сайта:
+
+- меню
+- кнопки
+- заголовки
+- описания
+- категории
+- формы
+- ошибки
+- сообщения об успешном бронировании
+- информация о турах
+- информация о местах
+- footer
+- админская часть, если возможно
+
+Важно:
+
+Контент туров тоже должен поддерживать три языка.
+
+Например, у тура должны быть:
+
+title_ru  
+title_en  
+title_es
+
+description_ru  
+description_en  
+description_es
+
+и т.д.
+
+Не делай перевод через Google Translate на frontend.
+
+Создай нормальную структуру мультиязычного контента в базе данных.
+
+---
+
+# 4. Структура сайта
+
+Создай следующие страницы:
+
+## Home
+
+Hero section с красивой фотографией Кыргызстана.
+
+Пример текста:
+
+"Discover Kyrgyzstan"
+
+"Where mountains meet the sky"
+
+Но текст должен быть редактируемым из админ-панели.
+
+Hero должен содержать CTA:
+
+"Explore tours"
+
+Также можно добавить небольшой блок поиска/фильтрации туров.
+
+---
+
+## Destinations
+
+Страница с популярными направлениями Кыргызстана.
+
+Например:
+
+- Issyk-Kul
+- Bishkek
+- Ala-Archa
+- Song-Kul
+- Kel-Suu
+- Osh
+- Jeti-Oguz
+- Skazka Canyon
+- Arslanbob
+- Tash Rabat
+
+Каждое направление должно иметь:
+
+- фотографию
+- название
+- короткое описание
+- кнопку "Explore"
+
+Информация должна храниться в базе данных и редактироваться через Admin Panel.
+
+---
+
+# 5. Tours
+
+Главная страница с турами.
+
+Создай красивые карточки туров.
+
+Каждая карточка:
+
+- image
+- название
+- location
+- duration
+- price
+- short description
+- difficulty
+- "View details"
+- "Book now"
+
+Добавь фильтры:
+
+- destination
+- duration
+- price
+- difficulty
+
+Также можно добавить сортировку.
+
+---
+
+# 6. Tour Details
+
+При открытии тура пользователь должен видеть полноценную страницу:
+
+- большая hero-фотография
+- название
+- location
+- duration
+- price
+- difficulty
+- description
+- itinerary / программа по дням
+- what's included
+- what's not included
+- meeting point
+- additional information
+- photo gallery
+
+Внизу:
+
+"Book this tour"
+
+---
+
+# 7. Booking system
+
+Пользователь должен иметь возможность забронировать тур.
+
+Форма бронирования:
+
+- Full name
+- Email
+- Phone / WhatsApp
+- Number of travelers
+- Preferred date
+- Tour
+- Additional message
+
+После отправки:
+
+1. Данные сохраняются в database.
+2. Создаётся booking с уникальным ID.
+3. Администратору приходит уведомление в Telegram Bot.
+4. Пользователь получает сообщение об успешной отправке заявки.
+
+Например:
+
+"Thank you! Your booking request has been received. Our team will contact you shortly."
+
+Не нужно сразу делать онлайн-оплату.
+
+На первом этапе это именно **booking request**, который получает администратор.
+
+---
+
+# 8. Telegram Bot
+
+Создай интеграцию с Telegram Bot API.
+
+После каждой новой заявки администратор должен получать сообщение примерно такого формата:
+
+🔔 NEW BOOKING
+
+Tour: Issyk-Kul Adventure  
+Date: 15 August 2027  
+Travelers: 2
+
+Name: John Smith  
+Email: john@example.com  
+Phone: +...
+
+Message:
+...
+
+Booking ID: #BK-00124
+
+Также желательно добавить inline-кнопки:
+
+✅ Confirm
+❌ Reject
+
+Если это возможно архитектурно, при нажатии кнопки статус booking должен изменяться в базе данных.
+
+Telegram credentials должны храниться в `.env`, а не в коде.
+
+Например:
+
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+
+Никогда не публикуй эти данные в GitHub.
+
+---
+
+# 9. Admin Panel
+
+Создай отдельную защищённую Admin Panel.
+
+Например:
+
+/admin/login
+
+Администратор должен входить через:
+
+- email
+- password
+
+После авторизации открывается dashboard.
+
+Обычный посетитель сайта НЕ должен иметь доступа к admin panel.
+
+Используй безопасную authentication систему.
+
+Пароли нельзя хранить в открытом виде.
+
+---
+
+# 10. Admin Dashboard
+
+Dashboard должен показывать:
+
+- total tours
+- total destinations
+- total bookings
+- new bookings
+- confirmed bookings
+- rejected bookings
+
+Можно добавить небольшую статистику.
+
+---
+
+# 11. Управление турами
+
+Администратор должен иметь возможность:
+
+CREATE — создавать тур
+
+READ — просматривать туры
+
+UPDATE — редактировать тур
+
+DELETE — удалять тур
+
+Для каждого тура администратор может редактировать:
+
+- title RU
+- title EN
+- title ES
+- description RU
+- description EN
+- description ES
+- price
+- duration
+- destination
+- difficulty
+- itinerary
+- included
+- not included
+- meeting point
+- images
+- availability
+- featured status
+
+---
+
+# 12. Управление Destinations
+
+Admin должен иметь возможность:
+
+- добавить destination
+- изменить destination
+- удалить destination
+- изменить фотографию
+- изменить описание
+- менять языковые версии
+
+---
+
+# 13. Управление Bookings
+
+Создай страницу:
+
+/admin/bookings
+
+Там отображается таблица:
+
+Booking ID  
+Tour  
+Customer  
+Date  
+Travelers  
+Phone  
+Email  
+Status  
+Created at
+
+Статусы:
+
+- New
+- Confirmed
+- Rejected
+- Completed
+
+Администратор должен иметь возможность изменить статус.
+
+Добавь возможность открыть подробную информацию о booking.
+
+---
+
+# 14. Управление Home Page
+
+Желательно сделать возможность редактировать основные блоки главной страницы:
+
+- Hero title
+- Hero subtitle
+- Hero image
+- CTA text
+- featured tours
+- about section
+
+Чтобы для изменения текста сайта не нужно было менять код.
+
+---
+
+# 15. Database
+
+Используй нормальную relational database.
+
+Предложи подходящую структуру.
+
+Минимально нужны таблицы:
+
+users / admins
+
+tours
+
+tour_translations
+
+destinations
+
+destination_translations
+
+bookings
+
+site_content
+
+tour_images
+
+Если используешь PostgreSQL / Supabase — это предпочтительный вариант.
+
+Продумай relationships между таблицами.
+
+---
+
+# 16. Technology
+
+Используй современный production-ready stack.
+
+Предпочтительно:
+
+Frontend:
+React / Next.js
+
+Styling:
+Tailwind CSS
+
+Backend:
+Next.js API routes / server actions либо отдельный backend, если это действительно необходимо.
+
+Database:
+PostgreSQL / Supabase
+
+Authentication:
+Supabase Auth или безопасная альтернативная система.
+
+Telegram:
+Telegram Bot API
+
+Images:
+Supabase Storage или другое подходящее image storage.
+
+Выбери архитектуру, которая будет простой для дальнейшего deployment и поддержки.
+
+---
+
+# 17. Responsive design
+
+Сайт должен отлично работать:
+
+Desktop  
+Laptop  
+Tablet  
+Mobile
+
+Особенно важно мобильное отображение, потому что туристы будут заходить с телефона.
+
+Проверь:
+
+- navigation
+- cards
+- booking form
+- filters
+- gallery
+- admin tables
+
+на маленьких экранах.
+
+---
+
+# 18. UX
+
+Сделай интерфейс максимально понятным.
+
+Пользователь должен за несколько секунд понять:
+
+1. Где я нахожусь?
+2. Что посмотреть?
+3. Какие есть туры?
+4. Сколько стоит?
+5. Как забронировать?
+
+Добавь аккуратные hover effects и небольшие animations.
+
+Но:
+
+НЕ делай чрезмерные animations.
+
+Не хочу:
+
+- flashy effects
+- огромные parallax effects
+- excessive glassmorphism
+- перегруженные gradients
+- generic AI-looking UI
+
+Дизайн должен выглядеть как настоящий premium travel startup.
+
+---
+
+# 19. Images
+
+Используй качественные фотографии Кыргызстана для первоначального demo content.
+
+Особенно:
+
+- mountains
+- Issyk-Kul
+- yurts
+- horses
+- valleys
+- lakes
+- canyons
+- Bishkek
+- traditional culture
+
+Но архитектура должна позволять администратору потом заменять изображения.
+
+Не делай изображения частью кода навсегда.
+
+---
+
+# 20. SEO
+
+Добавь базовый SEO:
+
+- page titles
+- meta descriptions
+- Open Graph
+- semantic HTML
+- alt text для изображений
+- sitemap
+- robots.txt
+
+Для страниц туров SEO title и description должны формироваться динамически.
+
+---
+
+# 21. Security
+
+Обязательно:
+
+- protected admin routes
+- authentication
+- password hashing / Supabase Auth
+- server-side validation
+- form validation
+- protection against unauthorized admin access
+- environment variables для секретов
+- Telegram token никогда не должен попадать во frontend
+- database security / Row Level Security, если используешь Supabase
+
+---
+
+# 22. Seed data
+
+После создания приложения добавь demo content.
+
+Например, минимум 6 туров:
+
+1. Issyk-Kul Escape
+2. Song-Kul Nomad Experience
+3. Ala-Archa Mountain Day
+4. South Kyrgyzstan Adventure
+5. Seven Lakes & Canyons
+6. Kyrgyzstan Grand Journey
+
+У каждого тура должны быть реальные, правдоподобные demo-данные.
+
+Создай контент сразу на:
+
+RU / EN / ES.
+
+---
+
+# 23. Admin credentials
+
+Создай инструкцию, как создать первого администратора.
+
+НЕ вставляй реальные пароли в production.
+
+Сделай `.env.example`.
+
+Например:
+
+DATABASE_URL=
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+
+---
+
+# 24. Project structure
+
+Перед началом разработки сначала продумай архитектуру проекта.
+
+После этого создай:
+
+- frontend
+- backend/API
+- database schema
+- authentication
+- admin panel
+- booking system
+- Telegram integration
+- multilingual system
+- seed data
+
+Не делай всё в одном огромном файле.
+
+Код должен быть разделён на логические компоненты.
+
+---
+
+# 25. Important requirement
+
+Мне нужен реально работающий проект.
+
+НЕ создавай просто визуальный prototype.
+
+Кнопка "Book now" должна реально работать.
+
+Форма должна реально сохранять booking.
+
+Admin login должен реально работать.
+
+Admin должен реально добавлять / редактировать / удалять tours.
+
+Telegram notification должен реально отправляться.
+
+Language switcher должен реально менять язык.
+
+Database должна реально использоваться.
+
+---
+
+# 26. Development process
+
+Работай поэтапно.
+
+Сначала:
+
+1. Проанализируй требования.
+2. Предложи architecture.
+3. Покажи project structure.
+4. Покажи database schema.
+5. Объясни, какие environment variables нужны.
+6. Затем начинай реализацию.
+
+После этого создай приложение.
+
+Если какие-то решения требуют выбора, выбирай наиболее простое и надёжное production-ready решение, а не усложняй архитектуру без необходимости.
