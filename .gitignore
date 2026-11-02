@@ -1,0 +1,11 @@
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Secrets: keep .env.example only
+.env
+.env.*
+!.env.example
+
+.DS_Store

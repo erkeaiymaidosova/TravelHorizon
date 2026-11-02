@@ -1,0 +1,14 @@
+import type { Photos, Tour } from '../types';
+export type RecordBase={id:string;createdAt:string;status:string;name:string;email:string;phone:string;country:string;language:string;message?:string};
+export type Booking=RecordBase&{tourTitle:string;tourSlug:string;date:string;adults:number;children:number};
+export type Lead=RecordBase;
+const read=<T,>(key:string):T[]=>{try{return JSON.parse(localStorage.getItem(key)||'[]') as T[]}catch{return []}};
+const write=<T,>(key:string,data:T[])=>localStorage.setItem(key,JSON.stringify(data));
+export const bookings=()=>read<Booking>('th_bookings'); export const leads=()=>read<Lead>('th_leads');
+export const addBooking=(data:Omit<Booking,'id'|'createdAt'|'status'>)=>{const item={...data,id:crypto.randomUUID(),createdAt:new Date().toISOString(),status:'New'};const all=[item,...bookings()];write('th_bookings',all);return item};
+export const addLead=(data:Omit<Lead,'id'|'createdAt'|'status'>)=>{const item={...data,id:crypto.randomUUID(),createdAt:new Date().toISOString(),status:'New'};write('th_leads',[item,...leads()]);return item};
+export const setStatus=(key:'th_bookings'|'th_leads',id:string,status:string)=>{const rows=read<RecordBase>(key).map(r=>r.id===id?{...r,status}:r);write(key,rows)};
+export const getTours=()=>{try{return JSON.parse(localStorage.getItem('th_tours')||'null') as Tour[]|null}catch{return null}};
+export const saveTours=(tours:Tour[])=>write('th_tours',tours);
+export const getPhotos=():Photos=>{try{return JSON.parse(localStorage.getItem('th_photos')||'{}') as Photos}catch{return {}}};
+export const savePhotos=(photos:Photos)=>localStorage.setItem('th_photos',JSON.stringify(photos));
